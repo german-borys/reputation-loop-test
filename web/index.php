@@ -1,11 +1,15 @@
 <?php
   require('api_call.php');
+  require('reviews.php');
+  require('business_info.php');
 
   $url = "http://test.localfeedbackloop.com/api?apiKey=61067f81f8cf7e4a1f673cd230216112&noOfReviews=10&internal=1&yelp=1&google=1&offset=50&threshold=1";
   $json = apiCall($url);
   $result = json_decode($json, TRUE);;
   $business_info = $result['business_info'];
+  $business_info_html = businessInfoHTML($business_info);
   $reviews = $result['reviews'];
+  $reviews_html = reviewsHTML($reviews);
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +20,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Reputation Loop Test</title>
+    <!-- our css -->
+    <link rel="stylesheet" href="stylesheets/main.css">
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -26,15 +32,13 @@
 
     </head>
   <body>
-    <h1>Reputation Loop Reviews</h1>
+    <div class="container">
+      <h2>Reputation Loop Reviews</h1>
+      <?php
+        print($business_info_html);
+        print($reviews_html);
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><?php echo($business_info['business_name']); ?></h3>
-      </div>
-      <div class="panel-body">
-        <?php //count($reviews); ?>
-      </div>
+      ?>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
