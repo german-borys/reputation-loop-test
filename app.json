@@ -1,6 +1,6 @@
 {
-  "name": "PHP Getting Started",
-  "description": "A barebones PHP app that makes use of the Silex web framework",
-  "repository": "https://github.com/heroku/php-getting-started",
+  "name": "Reputation Loop Test",
+  "description": "Single page application that calls an API",
+  "repository": "https://github.com/german-borys/reputation-loop-test.git",
   "addons": []
 }
